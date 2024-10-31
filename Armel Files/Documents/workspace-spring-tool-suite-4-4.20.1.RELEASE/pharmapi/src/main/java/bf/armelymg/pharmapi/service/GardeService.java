@@ -8,6 +8,7 @@ import java.util.concurrent.Future;
 import bf.armelymg.pharmapi.dto.PharmacieDTO;
 import bf.armelymg.pharmapi.entities.Garde;
 import bf.armelymg.pharmapi.entities.Pharmacie;
+import org.springframework.stereotype.Service;
 
 public interface GardeService {
 	

@@ -23,8 +23,8 @@ import lombok.extern.slf4j.Slf4j;
 @OpenAPIDefinition(
 		info = @Info(
 				title = "Pharm API", 
-				version = "1.0", 
-				description = "DOCUMENTATION Pharmacie de Garde v1.0")
+				version = "1.1",
+				description = "DOCUMENTATION Pharmacie de Garde v1.1")
 )
 @ComponentScan(basePackages = {"bf.armelymg.pharmapi"})
 public class PharmapiApplication {

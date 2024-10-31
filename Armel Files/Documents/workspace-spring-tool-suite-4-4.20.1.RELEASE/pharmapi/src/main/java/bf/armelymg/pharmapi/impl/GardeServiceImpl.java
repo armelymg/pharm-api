@@ -22,7 +22,6 @@ import com.google.firebase.cloud.FirestoreClient;
 
 import bf.armelymg.pharmapi.dto.PharmacieDTO;
 import bf.armelymg.pharmapi.entities.Garde;
-import bf.armelymg.pharmapi.entities.Pharmacie;
 import bf.armelymg.pharmapi.service.GardeService;
 
 @Service
@@ -129,8 +128,8 @@ public class GardeServiceImpl implements GardeService{
         CollectionReference collection = firestore.collection("gardes-bobo");
 
         // Récupérer tous les documents dans la collection "amis"
-        ApiFuture<com.google.cloud.firestore.QuerySnapshot> query = collection.get();
-        com.google.cloud.firestore.QuerySnapshot querySnapshot = query.get();
+        ApiFuture<QuerySnapshot> query = collection.get();
+        QuerySnapshot querySnapshot = query.get();
 
         // Parcourir tous les documents et mettre à jour la colonne "groupe"
         for (DocumentSnapshot document : querySnapshot.getDocuments()) {
