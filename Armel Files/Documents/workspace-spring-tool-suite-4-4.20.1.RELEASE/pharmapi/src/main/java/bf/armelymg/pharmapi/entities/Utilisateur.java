@@ -24,6 +24,7 @@ public class Utilisateur {
     private String type;
     private boolean isAvailable;
     private boolean isEnabled;
+    private Pharmacie pharmacie;
 
     public static Utilisateur fromSnapshot(DocumentSnapshot document) {
         Map<String, Object> data = document.getData();
@@ -36,7 +37,8 @@ public class Utilisateur {
                     (String) data.get("email"),
                     (String) data.get("type"),
                     (boolean) data.get("isAvailable"),
-                    (boolean) data.get("isEnabled")
+                    (boolean) data.get("isEnabled"),
+                    (Pharmacie) data.get("pharmacie")
             );
         } else {
             // Gestion d'une absence de données (si nécessaire)

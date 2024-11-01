@@ -44,6 +44,7 @@ public class PharmacieController {
     public ResponseEntity<List<PharmacieDTO>> getAllDemandeSupervision() throws InterruptedException, ExecutionException {
     	log.debug("REST request to get all Pharmacie");
         List<PharmacieDTO> result = pharmacieService.getAllPharmacie();
+        //List<PharmacieDTO> result = pharmacieService.findNearestPharmacies();
         return ResponseEntity.ok().body(result);
     }
 

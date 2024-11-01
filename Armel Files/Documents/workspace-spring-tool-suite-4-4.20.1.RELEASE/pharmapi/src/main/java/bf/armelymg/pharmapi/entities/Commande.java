@@ -19,7 +19,8 @@ public class Commande {
     private double montant;
     private boolean status;
     private GeoPoint localisationCient;
-    //private List<Produit> produitList;
+    private List<Produit> produitList;
+    private Pharmacie pharmacie;
 
     public static Commande fromSnapshot(DocumentSnapshot document) {
         Map<String, Object> data = document.getData();
@@ -28,8 +29,9 @@ public class Commande {
                     (Date) data.get("libelle"),
                     (double) data.get("description"),
                     (boolean) data.get("status"),
-                    (GeoPoint) data.get("localisationCient")
-                    //(List<Produit>) data.get("produitList")
+                    (GeoPoint) data.get("localisationCient"),
+                    (List<Produit>) data.get("produitList"),
+                    (Pharmacie) data.get("pharmacie")
             );
         } else {
             // Gestion d'une absence de données (si nécessaire)
