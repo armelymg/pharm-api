@@ -66,7 +66,6 @@ public class PharmacieController {
         return ResponseEntity.ok().body(result);
     }
 
-
     // Recupérer tous la liste de toutes les pharmacies de la ville de Bobo Dioulasso
     @Operation(summary = "Recupérer la liste de toutes les pharmacies de la ville de Bobo Dioulasso")
     @ApiResponses(value = {

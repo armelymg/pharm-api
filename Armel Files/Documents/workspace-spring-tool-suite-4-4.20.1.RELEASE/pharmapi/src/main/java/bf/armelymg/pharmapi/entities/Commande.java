@@ -1,5 +1,9 @@
 package bf.armelymg.pharmapi.entities;
 
+import bf.armelymg.pharmapi.utils.GeoPointDeserializer;
+import bf.armelymg.pharmapi.utils.GeoPointSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.GeoPoint;
 import lombok.AllArgsConstructor;
@@ -18,7 +22,10 @@ public class Commande {
     private Date date;
     private double montant;
     private boolean status;
-    private GeoPoint localisationCient;
+    @JsonSerialize(using = GeoPointSerializer.class)
+    @JsonDeserialize(using = GeoPointDeserializer.class)
+    private GeoPoint localisationClient;
+    private String telephoneClient;
     private List<Produit> produitList;
     private Pharmacie pharmacie;
 
@@ -29,7 +36,8 @@ public class Commande {
                     (Date) data.get("libelle"),
                     (double) data.get("description"),
                     (boolean) data.get("status"),
-                    (GeoPoint) data.get("localisationCient"),
+                    (GeoPoint) data.get("localisationClient"),
+                    (String) data.get("telephoneClient"),
                     (List<Produit>) data.get("produitList"),
                     (Pharmacie) data.get("pharmacie")
             );
