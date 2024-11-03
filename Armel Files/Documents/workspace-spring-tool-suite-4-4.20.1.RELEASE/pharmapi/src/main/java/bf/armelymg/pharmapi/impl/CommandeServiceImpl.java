@@ -53,4 +53,22 @@ public class CommandeServiceImpl implements CommandeService {
         return commandes;
     }
 
+    @Override
+    public List<Commande> findCommandePharmacie(String pharmacie) throws InterruptedException, ExecutionException {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference commandesRef = firestore.collection("commandes");
+
+        // Requête pour rechercher des commandes par telCLient
+        Query query = commandesRef.whereEqualTo("pharmacie.pharmacie", pharmacie);
+        QuerySnapshot querySnapshot = query.get().get();
+
+        List<Commande> commandes = new ArrayList<>();
+        for (QueryDocumentSnapshot document : querySnapshot.getDocuments()) {
+            Commande commande = document.toObject(Commande.class);
+            commandes.add(commande);
+        }
+
+        return commandes;
+    }
+
 }

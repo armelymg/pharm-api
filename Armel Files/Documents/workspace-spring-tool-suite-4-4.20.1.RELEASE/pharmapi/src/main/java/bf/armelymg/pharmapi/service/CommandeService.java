@@ -10,4 +10,5 @@ public interface CommandeService {
     Commande saveCommande(Commande commande) throws InterruptedException, ExecutionException;
 
     List<Commande> findCommandeUtilisateur(String tel) throws InterruptedException, ExecutionException;
+    List<Commande> findCommandePharmacie(String pharmacie) throws InterruptedException, ExecutionException;
 }

@@ -54,9 +54,26 @@ public class CommandeController {
             @ApiResponse(responseCode = "404", description = "Aucune commande trouvée",
                     content = @Content)})
     @GetMapping(path = "/commande/find", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Commande>> enableUser(@RequestParam String tel) throws InterruptedException, ExecutionException {
+    public ResponseEntity<List<Commande>> findByUserTel(@RequestParam String tel) throws InterruptedException, ExecutionException {
         log.debug("REST request to get a utilisateur");
         List<Commande> result = commandeService.findCommandeUtilisateur(tel);
+        return ResponseEntity.ok().body(result);
+    }
+
+    // Rechercher les commandes reçues par une pharmacie
+    @Operation(summary = "Rechercher les commandes reçues par une pharmacie")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Recherche des commandes reçues par une pharmacie",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Utilisateur.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "Aucune commande trouvée",
+                    content = @Content)})
+    @GetMapping(path = "/commande/pharmacie", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Commande>> findCommandePharmacie(@RequestParam String nom) throws InterruptedException, ExecutionException {
+        log.debug("REST request to get a utilisateur");
+        List<Commande> result = commandeService.findCommandePharmacie(nom);
         return ResponseEntity.ok().body(result);
     }
 
